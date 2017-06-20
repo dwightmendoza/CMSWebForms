@@ -1,0 +1,242 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CMSWebForms.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - CMS</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+   <%-- <link rel="stylesheet" type="text/css" href="Scripts/jquery-1.10.2.min.js" />  --%>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-combined.min.css" rel="stylesheet" />  
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="Content/test.css"/>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="respond" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+       <%-- <div class="container-fluid">--%>
+        <ul id="sidebar" class="dropdown-menu text-right" role="menu" aria-labelledby="dropdownMenu" style="display: block;  position: fixed; top: 0; left: 0;">
+        <li><h1 class="text-center"><a tabindex="-1" href="#" id="myId">CMS</a></h1></li>
+        <li class="divider"></li>
+        <li class="dropdown-submenu pull-right">
+            <a tabindex="-1" href="#" id="myId" >Sales</a>
+            <ul class="dropdown-menu text-right">
+                <li><a tabindex="-1" href="/Customers/Index" id="myId">Customers</a></li>
+                <li class="dropdown-submenu pull-right">
+                    <a tabindex="-1" href="#" id="myId">Pricing</a>
+                    <ul class="dropdown-menu text-center">
+                        <li><a tabindex="-1" href="#">A</a></li>
+                        <li><a tabindex="-1" href="#">B</a></li>
+                        <li><a tabindex="-1" href="#">C</a></li>
+                        <li><a tabindex="-1" href="#">D</a></li>
+                        <li><a tabindex="-1" href="#">E</a></li>
+                    </ul>
+                </li>
+                <li><a tabindex="-1" href="#">Quotes</a></li>
+                <li><a tabindex="-1" href="#">Orders</a></li>
+                <li><a tabindex="-1" href="#">Reports</a></li>
+            </ul>
+            </li>
+        <p>&nbsp;</p>
+        <!--<p>&nbsp;</p>-->
+        <li class="dropdown-submenu pull-right">
+            <a tabindex="-1" href="#" id="myId">Manufacturing</a>
+            <ul class="dropdown-menu text-center">
+                <li><a tabindex="-1" href="#">One</a></li>
+                <li><a tabindex="-1" href="#">Two</a></li>
+                <li><a tabindex="-1" href="#">Three</a></li>
+                <li><a tabindex="-1" href="#">Four</a></li>
+                <li><a tabindex="-1" href="#">Five</a></li>
+            </ul>
+        </li>
+            <p>&nbsp;</p>
+            <li class="dropdown-submenu pull-right">
+            <a tabindex="-1" href="#" id="myId">Inventory</a>
+            <ul class="dropdown-menu text-center">
+                <li><a tabindex="-1" href="#">Option 1</a></li>
+                <li><a tabindex="-1" href="#">Option 2</a></li>
+                <li><a tabindex="-1" href="#">Option 3</a></li>
+                <li><a tabindex="-1" href="#">Option 4</a></li>
+                <li><a tabindex="-1" href="#">Option 5</a></li>
+            </ul>
+        </li>
+            <p>&nbsp;</p>
+            <li class="dropdown-submenu pull-right">
+            <a tabindex="-1" href="#" id="myId">Lab</a>
+            <ul class="dropdown-menu text-center">
+                <li><a tabindex="-1" href="#">Option 1</a></li>
+                <li><a tabindex="-1" href="#">Option 2</a></li>
+                <li><a tabindex="-1" href="#">Option 3</a></li>
+                <li><a tabindex="-1" href="#">Option 4</a></li>
+                <li><a tabindex="-1" href="#">Option 5</a></li>
+            </ul>
+        </li>
+            <p>&nbsp;</p>
+            <li class="dropdown-submenu pull-right">
+            <a tabindex="-1" href="#" id="myId">Finance</a>
+            <ul class="dropdown-menu text-center">
+                <li><a tabindex="-1" href="#">Option 1</a></li>
+                <li><a tabindex="-1" href="#">Option 2</a></li>
+                <li><a tabindex="-1" href="#">Option 3</a></li>
+                <li><a tabindex="-1" href="#">Option 4</a></li>
+                <li><a tabindex="-1" href="#">Option 5</a></li>
+            </ul>
+        </li>
+            <p>&nbsp;</p>
+            <li class="dropdown-submenu pull-right">
+            <a tabindex="-1" href="#" id="myId">Executive</a>
+            <ul class="dropdown-menu text-center">
+                <li><a tabindex="-1" href="#">Option 1</a></li>
+                <li><a tabindex="-1" href="#">Option 2</a></li>
+                <li><a tabindex="-1" href="#">Option 3</a></li>
+                <li><a tabindex="-1" href="#">Option 4</a></li>
+                <li><a tabindex="-1" href="#">Option 5</a></li>
+            </ul>
+        </li>
+            <p>&nbsp;</p>
+            <li class="dropdown-submenu pull-right">
+            <a tabindex="-1" href="#" id="myId">Admin</a>
+            <ul class="dropdown-menu text-center">
+                <li><a tabindex="-1" href="#">Option 1</a></li>
+                <li><a tabindex="-1" href="#">Option 2</a></li>
+                <li><a tabindex="-1" href="#">Option 3</a></li>
+                <li><a tabindex="-1" href="#">Option 4</a></li>
+                <li><a tabindex="-1" href="#">Option 5</a></li>
+            </ul>
+        </li>
+    </ul>
+    <%--</div>--%>
+    <!--<div id="wrapper">-->
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <button id="sidebarToggle" class="btn btn-primary btn-lg" onclick="myFunction()">
+                            <i class="fa fa-angle-left"></i>
+          
+                        </button>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" class="btn btn-sm btn-info">
+                         <i class="fa fa-sign-in"></i>&nbsp;&nbsp;Log in
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="content-header container-fluid text-center">
+            <h1 id="home" class="">
+                Chemical Manufacturing System
+            </h1>
+        </div>
+        <div class="page-content inset container-fluid">
+            <div class="row">
+                <div class="jumbotron text-center">
+                    <h1 class="">Welcome!</h1>
+                    <p class="">
+                        Welcome to CMS, putting the latest in Web technologies to work for your business!
+                        To continue, please Log in...
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <div id="footer"  class="container-fluid">
+            <div class="navbar navbar-inverse navbar-fixed-bottom">
+                <h4 class="text-center text-primary">&copy;2016 Apiron Technologies, Inc.</h4>
+            </div>
+            </div>
+            <%--<footer>
+                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+            </footer>--%>
+        </div>
+    <!--</div>-->
+   
+    
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/site.js"></script>
+
+        <%--<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/">Home</a></li>
+                        <li><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="~/Contact">Contact</a></li>
+                    </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Register">Register</a></li>
+                                <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+        </div>--%>
+        <%--<div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+            </footer>
+        </div>--%>
+    </form>
+</body>
+</html>

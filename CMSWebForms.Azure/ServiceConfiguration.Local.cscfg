@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="CMSWebForms.Azure" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="CMSWebForms">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="StanChem" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEFCCxC7MzVOMRhWVjHv8pXcwDQYJKoZIhvcNAQEBBQAEggEASQ5GzKrl5bYW8ggHnIB17SFZxe/Mr6ZpEkNx5Bib+h6++CfaxVgnyLlNE4wMsC8xvLNQeAPMjHvn4wZaLm0SDVH5MJCXlYBVX6tXojxg12t03EFgx/3FWAQYfUewZeOKfO0T817w4qJpb9kGNNuYMF0uQ1PfnEM1Ebt7tbhwKBjnAA6qSqckdoT+tWvgg/AVe9gjZ93RoTKixBBg9tGYM4TNBTYfloYMYOXEAV59N/b+yGBG8SLZEEVYamZj4AOxBxfBxhoHw/wsahWWohkX4JIoVsGoWluF0wwkgZbHOWEtGQLp4llnIYE1goQiI8G4DM7Ag3t4qMt8sZ5m8dP1QjAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECN2tZM4dBNR8gBAISSMOfqRs+nM1J3rawzwu" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2017-12-22T23:59:59.0000000-05:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
+      <Setting name="APPINSIGHTS_INSTRUMENTATIONKEY" value="0164ae2e-bfc7-43a8-b0af-142de1d8ab0b" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="B1A0F803CDEEE237A2E483033DC37E8FBFB90CBF" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+</ServiceConfiguration>

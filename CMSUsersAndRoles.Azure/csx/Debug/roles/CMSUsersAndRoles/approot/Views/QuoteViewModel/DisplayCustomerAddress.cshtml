@@ -1,0 +1,109 @@
+﻿@model CMSUsersAndRoles.Models.QuoteViewModel
+
+@{
+    ViewBag.Title = "DisplayCustomerAddress";
+    Layout = null;
+}
+
+<div>
+    @*<hr />*@
+    <h4>Company Address:</h4>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            <span class="firstName">@Html.DisplayFor(model => model.FirstName)</span>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            <span class="lastName">@Html.DisplayFor(model => model.LastName)</span>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company)
+        </dt>
+
+        <dd>
+            <span class="companyname">@Html.DisplayFor(model => model.Company)</span>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address1)
+        </dt>
+
+        <dd>
+            <span class="address1"> @Html.DisplayFor(model => model.Address1)</span>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address2)
+        </dt>
+
+        <dd>
+            <span class="address2">@Html.DisplayFor(model => model.Address2)</span>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            <span class="city">@Html.DisplayFor(model => model.City)</span>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            <span class="state">@Html.DisplayFor(model => model.State)</span>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </dt>
+
+        <dd>
+            <span class="zipCode">@Html.DisplayFor(model => model.PostalCode)</span>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkPhone)
+        </dt>
+
+        <dd>
+            <span class="workPhone">@Html.DisplayFor(model => model.WorkPhone)</span>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CellPhone)
+        </dt>
+
+        <dd>
+            <span class="cellPhone">@Html.DisplayFor(model => model.CellPhone)</span>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            <span class="email">@Html.DisplayFor(model => model.Email)</span>
+        </dd>
+    </dl>
+    @*<h4>Delivery Address:</h4>
+    <div class="form-group">
+        @Html.LabelFor(model => model.DeliveryAddressSame, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox" id="DAsame">
+                @Html.EditorFor(model => model.DeliveryAddressSame)
+            </div>
+        </div>*@
+    </div>
+</div>

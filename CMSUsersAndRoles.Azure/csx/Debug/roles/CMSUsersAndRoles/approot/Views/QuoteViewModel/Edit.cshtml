@@ -1,0 +1,292 @@
+﻿@model CMSUsersAndRoles.Models.QuoteViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="~/Scripts/jquery.mask.min.js"></script>
+
+<script type="text/javascript">
+    function RemoveRow() {
+        var $tr = $(this).closest('.row');
+        $tr.remove();
+        var sum = 0;
+        $('.price').each(function () {
+            sum += Number($(this).val());
+        });
+        $('.subTotal').val(sum.toFixed(2));
+        var tax = Number($('.tax').val());
+        var total = sum + tax;
+        $('.total').val(total.toFixed(2));
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function($) {
+        $('.phone_us').mask('(000) 000-0000');
+    });
+</script>
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Quote</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CustomerId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuoteId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QuoteId, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QuoteId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SalesRep, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SalesRep, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SalesRep, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressContact, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressContact, new { htmlAttributes = new { @class = "form-control DAcontact" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressContact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressCompany, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressCompany, new { htmlAttributes = new { @class = "form-control DAcompany" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressCompany, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressStreet1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressStreet1, new { htmlAttributes = new { @class = "form-control DAstreet1" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressStreet1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressStreet2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressStreet2, new { htmlAttributes = new { @class = "form-control DAstreet2" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressStreet2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressCity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressCity, new { htmlAttributes = new { @class = "form-control DAcity" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressCity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressState, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressState, new { htmlAttributes = new { @class = "form-control DAstate" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressState, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressZip, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressZip, new { htmlAttributes = new { @class = "form-control DAzip" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressZip, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressPhone, new { htmlAttributes = new { @class = "form-control DAphone phone_us" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressPhone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressAltPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressAltPhone, new { htmlAttributes = new { @class = "form-control DAaltphone phone_us" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressAltPhone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressEmail, new { htmlAttributes = new { @class = "form-control DAemail" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuoteDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.QuoteDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(model => model.QuoteDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GoodUntil, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.GoodUntil, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(model => model.GoodUntil, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="qdheading"><p><b>SKU&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;        Product Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;        Amount&emsp;&emsp;&nbsp;&nbsp;          Unit Price&emsp;&nbsp;&nbsp;      Discount&emsp;&emsp;&nbsp;&nbsp;       Price</b></p></div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuoteDetail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="QuoteDetails">
+                @*<div id="row" class="row">*@
+                <span class="text-danger">@ViewBag.Error</span>
+                    @foreach (var item in Model.QuoteDetail)
+                    {
+                        @Html.Partial("EditQuoteDetail", item)
+                    }
+                @*</div>*@
+           
+
+               
+                    @Html.LabelFor(model => model.Subtotal, htmlAttributes: new { @class = "control-label col-md-2 totlbl" })
+                    @Html.EditorFor(model => model.Subtotal, new { htmlAttributes = new { @class = "form-control subTotal" } })
+                    @Html.LabelFor(model => model.Tax, htmlAttributes: new { @class = "control-label col-md-2 totlbl" })
+                    @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "form-control tax" } })
+                    @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2 totlbl" })
+                    @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control total" } })
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+               
+                    @Ajax.ActionLink("Add product", "AddProduct", "QuoteViewModel", new { quoteId = Model.QuoteId, quoteDetailId = (Model.QuoteDetail.Count + 1) }, new AjaxOptions
+           {
+               UpdateTargetId = "QuoteDetails",
+               InsertionMode = InsertionMode.InsertBefore
+           })
+                   
+                </div>
+            }
+           
+
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(document).on("change", '[name*="ProductId"]', function () {
+                        var row = $(this).closest('.row');
+                        $.post("/QuoteViewModel/GetProduct", { pId: $(this).val() }, function (data) {
+                            $(row.find("[name*='ProductId']").val(data.ProductId));
+                            $(row.find("[name*='SKU']").val(data.SKU));
+                            $(row.find("[name*='Amount']").val(1));
+                            $(row.find("[name*='Discount']").val(0));
+                            $(row.find("[name*='ProductName']").val(data.Name));
+                            $(row.find("[name*='Price']").val(data.Price));
+                            var sum = 0;
+                            $('.price').each(function () {
+                                sum += Number($(this).val());
+                            });
+                            $('.subTotal').val(sum.toFixed(2));
+                            var tax = Number($('.tax').val());
+                            var total = sum + tax;
+                            $('.total').val(total.toFixed(2));
+                        });
+                    });
+                });
+            </script>
+
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(document).on("change", '[name*="Discount"], [name*="Amount"]', function calculate() {
+                        var row = $(this).closest('.row');
+                        var amount = Number(row.find('.amount').val());
+                        var listprice = Number(row.find('.listprice').val());
+                        var discount = Number(row.find('.discount').val());
+                        var finalPrice = amount * listprice * ((100 - discount) / 100)
+                        // Update
+                        row.find('.price').val(finalPrice.toFixed(2));
+                    });
+                });
+            </script>
+
+            <script type="text/javascript">
+                $('.amount, .discount').change(function () {
+                    // Get container
+                    var row = $(this).closest('.row');
+                    // Get values
+                    var amount = Number(row.find('.amount').val());
+                    var listprice = Number(row.find('.listprice').val());
+                    var discount = Number(row.find('.discount').val());
+                    // Validate
+                    if (isNaN(amount) || isNaN(listprice) || isNaN(discount)) {
+                        return; // may want to display an error message?
+                    }
+                    // Calculate
+                    var finalPrice = amount * listprice * ((100 - discount) / 100)
+                    // Update
+                    row.find('.price').val(finalPrice.toFixed(2));
+                });
+            </script>
+
+            <script type="text/javascript">
+                    var sum = 0;
+                    $('.price').each(function () {
+                        sum += Number($(this).val());
+                    });
+                    $('.subTotal').val(sum.toFixed(2));
+                    var tax = Number($('.tax').val());
+                    var total = sum + tax;
+                    $('.total').val(total.toFixed(2));
+            </script>
+
+            <script type="text/javascript">
+                $('.amount, .discount, .tax').change(function () {
+                    var sum = 0;
+                    $('.price').each(function () {
+                        sum += Number($(this).val());
+                    });
+                    $('.subTotal').val(sum.toFixed(2));
+                    var tax = Number($('.tax').val());
+                    var total = sum + tax;
+                    $('.total').val(total.toFixed(2));
+                });
+            </script>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <br />
+                    <p>&nbsp;</p>
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

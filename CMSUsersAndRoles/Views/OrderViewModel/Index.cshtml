@@ -1,0 +1,111 @@
+﻿@model IEnumerable<CMSUsersAndRoles.Models.OrderViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Orders</h2>
+@using (Html.BeginForm("Index", "OrderViewModel", FormMethod.Get))
+{
+
+    @Html.TextBox("Search", null, new { @class = "search-query form-control ordersearch", placeholder = "Search Order no., Company name, Sales rep or Order status" });
+    <button type="submit" class="btn btn-lg btn-primary" value="Search">
+        <span class="glyphicon glyphicon-search"></span>
+    </button>
+
+}
+<p>&nbsp;</p>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.SalesRep)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Company)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ShippingAddressPhone)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ShippingAddressEmail)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        
+        @*<th>
+            @Html.DisplayNameFor(model => model.DateShipped)
+        </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="orderId">
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+
+            <td class="orderDate">
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatusString).ToString().Replace("_", " ")
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.SalesRep)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Company)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingAddressPhone)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingAddressEmail)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+           
+            @*<td>
+                @Html.DisplayFor(modelItem => item.DateShipped)
+            </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+   

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<CMSUsersAndRoles.Models.Formula>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Formulas</h2>
+@using (Html.BeginForm("Index", "Formulas", FormMethod.Get))
+{
+
+    @Html.TextBox("Search", null, new { @class = "search-query form-control", placeholder = "Search product name or SKU" });
+    <button type="submit" class="btn btn-lg btn-primary" value="Search">
+        <span class="glyphicon glyphicon-search"></span>
+    </button>
+
+}
+<p>&nbsp;</p>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SKU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Instructions)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SKU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Instructions)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
+            @Html.ActionLink("View", "Details", new { id=item.ProductId }) 
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.ProductId })*@
+        </td>
+    </tr>
+}
+
+</table>

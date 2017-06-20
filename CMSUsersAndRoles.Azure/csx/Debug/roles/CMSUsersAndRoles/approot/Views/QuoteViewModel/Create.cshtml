@@ -1,0 +1,361 @@
+﻿@model CMSUsersAndRoles.Models.QuoteViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="~/Scripts/jquery.mask.min.js"></script>
+<script type="text/javascript">
+    function RemoveRow() {
+        var $tr = $(this).closest('.row');
+        $tr.remove();
+        var sum = 0;
+        $('.price').each(function () {
+            sum += Number($(this).val());
+        });
+        $('.subTotal').val(sum.toFixed(2));
+        var tax = Number($('.tax').val());
+        var total = sum + tax;
+        $('.total').val(total.toFixed(2));
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function($) {
+        $('.phone_us').mask('(000) 000-0000');
+    });
+</script>
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Quote</h4>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.QuoteId)
+            </div>
+        </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.CustomerId, new { @class = "form-control customerId" } )
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Company, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CustomerId, new SelectList(ViewBag.Customers, "CustomerId", "Company"), "---Select one---", new { htmlAttributes = new { @class = "company" } });
+                @Html.HiddenFor(model => model.Company, new { @class = "companyName" })
+                @Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+        <div id="custDetails"></div>
+
+        <h4>Delivery Address:</h4>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressSame, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox" id="DAsame">
+                    @Html.EditorFor(model => model.DeliveryAddressSame)
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SalesRep, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SalesRep, new { htmlAttributes = new { @class = "form-control salesRep" } })
+                @Html.ValidationMessageFor(model => model.SalesRep, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressContact, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressContact, new { htmlAttributes = new { @class = "form-control DAcontact" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressContact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+                @Html.LabelFor(model => model.DeliveryAddressCompany, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DeliveryAddressCompany, new { htmlAttributes = new { @class = "form-control DAcompany" } })
+                    @Html.ValidationMessageFor(model => model.DeliveryAddressCompany, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressStreet1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressStreet1, new { htmlAttributes = new { @class = "form-control DAstreet1" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressStreet1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressStreet2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressStreet2, new { htmlAttributes = new { @class = "form-control DAstreet2" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressStreet2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressCity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressCity, new { htmlAttributes = new { @class = "form-control DAcity" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressCity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressState, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressState, new { htmlAttributes = new { @class = "form-control DAstate" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressState, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressZip, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressZip, new { htmlAttributes = new { @class = "form-control DAzip" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressZip, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressPhone, new { htmlAttributes = new { @class = "form-control DAphone phone_us" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressPhone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressAltPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressAltPhone, new { htmlAttributes = new { @class = "form-control DAaltphone phone_us" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressAltPhone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryAddressEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DeliveryAddressEmail, new { htmlAttributes = new { @class = "form-control DAemail" } })
+                @Html.ValidationMessageFor(model => model.DeliveryAddressEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Discount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control custDiscount" } })
+                @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PaymentTerms, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PaymentTerms, new { htmlAttributes = new { @class = "form-control paymentTerms" } })
+                @Html.ValidationMessageFor(model => model.PaymentTerms, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuoteDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.QuoteDate, new { @Value = @DateTime.Now.ToShortDateString(), htmlAttributes = new { @class = "form-control quotedate" } })
+                @Html.ValidationMessageFor(model => model.QuoteDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GoodUntil, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GoodUntil, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GoodUntil, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="qdheader"><p><b>SKU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        Product Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;        Amount&emsp;&emsp;&nbsp;&nbsp;          Unit Price&emsp;&nbsp;&nbsp;      Discount&emsp;&emsp;&nbsp;&nbsp;       Price</b></p></div>*@
+        <div class="qdheading"><p><b>SKU&nbsp;&nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&nbsp;        Product Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;        Amount&emsp;&emsp;&nbsp;&nbsp;          Unit Price&emsp;&nbsp;&nbsp;      Discount&emsp;&emsp;&nbsp;&nbsp;       Price</b></p></div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuoteDetail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="QuoteDetails">
+                @*@Html.ValidationMessageFor(model => model.QuoteDetail, "", new { @class = "text-danger"})*@
+                <span class="text-danger">@ViewBag.Error</span>
+          @foreach (var detail in Model.QuoteDetail)
+           {
+               @Html.Partial("EditQuoteDetail", detail)
+           }
+
+                @Html.LabelFor(model => model.Subtotal, htmlAttributes: new { @class = "control-label col-md-2 totlbl" })
+                @Html.EditorFor(model => model.Subtotal, new { htmlAttributes = new { @class = "form-control subTotal" } })
+                @Html.LabelFor(model => model.Tax, htmlAttributes: new { @class = "control-label col-md-2 totlbl" })
+                @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "form-control tax" } })
+                @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2 totlbl" })
+                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control total" } })
+                <br />
+                @*@Html.LabelFor(model => model.Subtotal, htmlAttributes: new { @class = "control-label col-md-2", style = "float:right; margin-right:45px; margin-top:10px; font-weight:bold" })
+                @Html.EditorFor(model => model.Subtotal, new { htmlAttributes = new { @class = "form-control subTotal", style = "width: 100px; float:right; clear:left; text-align:right" } })
+                @Html.LabelFor(model => model.Tax, htmlAttributes: new { @class = "control-label col-md-2", style = "float:right; clear:right; margin-right:45px; margin-top:10px; font-weight:bold" })
+                @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @class = "form-control tax", style = "width: 100px; float:right; clear:left; text-align:right" } })
+                @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2", style = "float:right; clear:right; margin-right:45px; margin-top:10px; font-weight:bold" })
+                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control total", style = "width: 100px; float:right; clear:left; text-align:right" } })
+                <br />*@
+                  
+                @Ajax.ActionLink("Add product", "AddProduct", "QuoteViewModel", new { quoteId = Model.QuoteId, quoteDetailId = (Model.QuoteDetail.Count + 1) }, new AjaxOptions
+           {
+               UpdateTargetId = "QuoteDetails",
+               InsertionMode = InsertionMode.InsertBefore
+           })
+
+            </div>
+
+            <script type="text/javascript">
+                $(document).on("change", '[id="CustomerId"]', function () {
+                    $('#custDetails').load("/QuoteViewModel/DisplayCustomerAddress");
+                    $.post("/QuoteViewModel/GetCustomer", { custId: $(this).val() }, function (data) {
+                        $(".customerId").val(data.CustomerId);
+                        $(".salesRep").val(data.SalesRep);
+                        $(".firstName").html(data.FirstName);
+                        $(".lastName").html(data.LastName);
+                        $(".companyname").html(data.Company);
+                        $(".companyName").val(data.Company);
+                        $(".address1").html(data.Address1);
+                        $(".address2").html(data.Address2);
+                        $(".city").html(data.City);
+                        $(".state").html(data.State);
+                        $(".zipCode").html(data.PostalCode);
+                        $(".workPhone").html(data.WorkPhone);
+                        $(".cellPhone").html(data.CellPhone);
+                        $(".email").html(data.Email);
+                        $(".custDiscount").val(data.Discount);
+                        $(".paymentTerms").val(data.PaymentTerms);
+                    });
+                });
+            </script>
+
+          <script type="text/javascript">
+                    $('#DAsame').click(function () {
+                    $.post("/QuoteViewModel/GetCustomer", { custId: $(".customerId").val() }, function (data) {
+                        $(".DAcontact").val(data.FirstName + " " + data.LastName);
+                        $(".DAcompany").val(data.Company);
+                        $(".DAstreet1").val(data.Address1);
+                        $(".DAstreet2").val(data.Address2);
+                        $(".DAcity").val(data.City);
+                        $(".DAstate").val(data.State);
+                        $(".DAzip").val(data.PostalCode);
+                        $(".DAphone").val(data.WorkPhone);
+                        $(".DAaltphone").val(data.CellPhone);
+                        $(".DAemail").val(data.Email);
+                    });
+                });
+         </script>
+
+
+            @*<script type="text/javascript">
+                $(document).ready(function () {
+                    $(document).on("change", '[class="ProductId"]', function () {
+                        var row = $(this).closest('.row');
+                        $.post("/QuoteViewModel/GetProduct", { pId: $(this).val() }, function (data) {
+                            $(row.find("[class='ProductId']").val(data.ProductId));
+                            $(row.find("[class='SKU']").val(data.SKU));
+                            $(row.find("[class='ProductName']").val(data.Name));
+                            $(row.find("[class='Amt']").val(1));
+                            $(row.find("[class='Prce']").val(data.Price));*@
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(document).on("change", '[name*="ProductId"]', function () {
+                        var row = $(this).closest('.row');
+                        $.post("/QuoteViewModel/GetProduct", { pId: $(this).val() }, function (data) {
+                            $(row.find("[name*='ProductId']").val(data.ProductId));
+                            $(row.find("[name*='SKU']").val(data.SKU));
+                            $(row.find("[name*='Amount']").val(1));
+                            $(row.find("[name*='Discount']").val(0));
+                            $(row.find("[name*='ProductName']").val(data.Name));
+                            $(row.find("[name*='Price']").val(data.Price));
+                            var sum = 0;
+                            $('.price').each(function () {
+                                sum += Number($(this).val());
+                            });
+                            $('.subTotal').val(sum.toFixed(2));
+                            var tax = Number($('.tax').val());
+                            var total = sum + tax;
+                            $('.total').val(total.toFixed(2));
+                        });
+
+                    });
+                });
+            </script>
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(document).on("change", '[name*="Discount"], [name*="Amount"]', function calculate() {
+                        var row = $(this).closest('.row');
+                        var amount = Number(row.find('.amount').val());
+                        var listprice = Number(row.find('.listprice').val());
+                        var discount = Number(row.find('.discount').val());
+                        var finalPrice = amount * listprice * ((100 - discount) / 100)
+                        // Update
+                        row.find('.price').val(finalPrice.toFixed(2));
+                        var sum = 0;
+                        $('.price').each(function () {
+                            sum += Number($(this).val());
+                        });
+                        $('.subTotal').val(sum.toFixed(2));
+                        var tax = Number($('.tax').val());
+                        var total = sum + tax;
+                        $('.total').val(total.toFixed(2));
+                    });
+                });
+            </script>
+
+            <script type="text/javascript">
+                $('.tax').change(function () {
+                    var sum = 0;
+                    $('.price').each(function () {
+                        sum += Number($(this).val());
+                    });
+                    $('.subTotal').val(sum.toFixed(2));
+                    var tax = Number($('.tax').val());
+                    var total = sum + tax;
+                    $('.total').val(total.toFixed(2));
+                });
+            </script>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

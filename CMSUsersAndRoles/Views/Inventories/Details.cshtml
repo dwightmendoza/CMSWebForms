@@ -1,0 +1,138 @@
+﻿@model CMSUsersAndRoles.Models.Inventory
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Inventory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SKU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SKU)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Warehouse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Warehouse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OnHand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OnHand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OnOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OnOrder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Committed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Committed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Available)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Available)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Minimum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Minimum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EOQ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EOQ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Maximum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Maximum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StdCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StdCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvgCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AvgCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InventoryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InventoryDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,64 @@
+﻿@media print {
+    #sidebar {
+        display: none !important;
+    }
+
+    .navigationbar {
+        display: none;
+    }
+
+    .printbtn {
+        display: none;
+    }
+
+    .footer {
+        display: none;
+    }
+
+    .link {
+        display: none;
+    }
+
+    a[href]:after {
+        content: none !important;
+    }
+
+    .qdhead {
+        background: #0094ff !important;
+        margin-right: 200px !important;
+        border-bottom: 1px solid;
+    }
+
+    .qddet {
+        margin-right:253px !important;
+        background: #f5e149 !important;
+        border-bottom: 1px solid !important;
+    }
+
+    .prttotalsub {
+        background: #f5e149 !important;
+        border-bottom: 1px solid !important;
+    }
+
+    .prttotaltax, .prttotaltot {
+        background: #f5e149 !important;
+        border-bottom: 1px solid !important;
+        border-top: 1px solid !important;
+    }
+
+    .subtotlbls {
+        margin-right: 165px !important;
+    }
+
+    .taxlbls {
+        margin-right: 201px !important;
+    }
+
+    .totlbls {
+        margin-right: 192px !important;
+    }
+
+    @page {
+        margin: 0cm;
+    }
+}

@@ -1,0 +1,128 @@
+﻿@model IEnumerable<CMSUsersAndRoles.Models.Inventory>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Inventory</h2>
+@using (Html.BeginForm("Index", "Inventories", FormMethod.Get))
+{
+
+    @Html.TextBox("Search", null, new { @class = "search-query form-control", placeholder = "Search product name or SKU" });
+    <button type="submit" class="btn btn-lg btn-primary" value="Search">
+        <span class="glyphicon glyphicon-search"></span>
+    </button>
+
+}
+<p>&nbsp;</p>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SKU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Warehouse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OnHand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OnOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Committed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Minimum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EOQ)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Maximum)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.StdCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AvgCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastCost)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.InventoryDate)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SKU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Warehouse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OnHand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OnOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Committed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Available)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Minimum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EOQ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Maximum)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.StdCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AvgCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastCost)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.InventoryDate)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.ProductId })*@
+        </td>
+    </tr>
+}
+
+</table>

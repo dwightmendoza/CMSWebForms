@@ -1,0 +1,95 @@
+﻿@model IEnumerable<CMSUsersAndRoles.Models.QuoteViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quotes</h2>
+@using (Html.BeginForm("Index", "QuoteViewModel", FormMethod.Get))
+{
+
+    @Html.TextBox("Search", null, new { @class = "search-query form-control", placeholder = "Search Company name or Sales rep" });
+    <button type="submit" class="btn btn-lg btn-primary" value="Search">
+        <span class="glyphicon glyphicon-search"></span>
+    </button>
+
+}
+<p>&nbsp;</p>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.QuoteId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesRep)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Company)
+        </th>
+       
+        <th>
+           @Html.DisplayNameFor(model => model.DeliveryAddressPhone)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryAddressEmail)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuoteDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoodUntil)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuoteId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalesRep)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Company)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryAddressPhone)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryAddressEmail)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuoteDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GoodUntil)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.QuoteId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.QuoteId }) |
+            @Html.ActionLink("Order", "Order", new { id = item.QuoteId }) | 
+            @Html.ActionLink("Delete", "Delete", new { id=item.QuoteId })
+        </td>
+    </tr>
+}
+
+</table>

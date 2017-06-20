@@ -1,0 +1,61 @@
+﻿@model CMSUsersAndRoles.Models.Ingredient
+
+@{
+    ViewBag.Title = "EditIngredients";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@*@{
+        var productId = (int)ViewData["ProductId"];
+        var ingredientId = (int)ViewData["IngredientId"];
+ }*@
+<script type="text/javascript">
+   function RemoveRow() {
+   var $tr = $(this).closest('.row');
+   $tr.remove();
+   }
+</script>
+
+
+<div id="row" class="row">
+    <table>
+       
+
+        @using (Html.BeginCollectionItem("ingredients"))
+
+
+
+        {
+
+           
+            <tr>
+               
+                @Html.HiddenFor(model => model.ProductId)
+                @Html.HiddenFor(model => model.IngredientId)
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control ingname" } })
+                @Html.ValidationMessageFor(model => model.Name)
+                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control ingamount" } })
+                @Html.ValidationMessageFor(model => model.Amount)
+                @Html.EnumDropDownListFor(model => model.UnitOfMeasure, //Model field that will be used to store user selection
+                              "--Select--", //Text for first "default" option
+                              new { @class = "form-control ingUOM" })  @* A class name to assign to "select" tag *@
+               
+                @Ajax.ActionLink(" ", "DeleteIngredient", "Formulas", new { productId = Model.ProductId, ingredientId = (Model.IngredientId) },
+                          new AjaxOptions
+                          {
+                              HttpMethod = "POST",
+                              Confirm = "Are you Sure You Want to Delete " + Model.Name,
+                              OnSuccess = "RemoveRow"
+                          },
+                          new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+                @Html.ValidationMessageFor(model => model.UnitOfMeasure)
+            </tr>
+
+        }
+
+    </table>
+</div>
+
+
+

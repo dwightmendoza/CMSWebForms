@@ -1,0 +1,376 @@
+﻿body{
+   padding-top:0px;
+   margin-top: 0px;
+   overflow-x: hidden;
+   overflow-y: scroll;
+}
+
+#sidebar{
+  background: #000;
+  color: #999999;
+  /*color: aqua !important;*/
+  border-radius: 0;
+  padding: 0;
+  height: 100%;
+  width: 200px;
+  margin-top: 0;  
+  transition: .25s;
+}
+
+
+#sidebar.dropdown-menu.text-right.hide-sidebar{
+    left: -200px !important;
+    transition: .25s;
+}
+
+.navbar.navbar-inverse{
+    border-radius: 0 !important;
+    background: #1536b6 !important;
+}
+
+.navbar-inverse
+.navbar-inverse .nav>li>a {
+    color: #fff !important;
+}
+
+.btn-info{
+    color: #fff !important;
+}
+
+.navbar.navbar-inverse.navbar-fixed-bottom{
+   margin-left: 200px !important;
+}
+
+#page-content-wrapper {
+    margin-left: 200px;
+    transition: .25s; 
+    margin-top: 0 !important;
+    top: 0 !important;
+}
+
+#page-content-wrapper.hide-sidebar{
+    margin-left: 0;
+    transition: .25s;
+}
+
+.dropdown-menu {
+ border-radius: 0;
+ padding: 0;
+ /*color: aqua !important;*/
+}
+
+.dropdown-menu li a {
+  background: #000;
+  color: #999999;
+  display: block;
+  text-decoration: none;
+  outline: none;
+ 
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li.active {
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+  text-decoration: none;
+}
+
+.dropdown-menu.text-right li a {
+  background: #000;
+  color: #999999;
+  /*color: aqua !important;*/
+  display: block;
+  text-decoration: none;
+  outline: none;
+ 
+}
+
+.dropdown-menu.text-right li a:hover,
+.dropdown-menu.text-right li.active {
+  color: #fff;
+  background-color: #333131 ;
+  text-decoration: none;
+}
+
+.dropdown-submenu.pull-right{
+  background: #000;
+  display: block;
+  width: 100%;
+}
+
+.Active  {
+    color: aqua !important;   
+}
+
+.control-label {
+    padding-top: 0 !important;
+    text-align: left !important;
+}
+
+.checkbox {
+    padding-top: 0 !important;
+}
+
+#loginForm {
+    padding-left: 20px;
+}
+
+.SKU, .discount, .price {
+    width: 100px;
+    text-align: right;
+}
+
+.ProductName, .company {
+    width: 300px !important;
+}
+
+.amount, .listprice {
+    width: 95px;
+    text-align: right;
+}
+
+.qdheading {
+    margin-left: 160px;
+}
+
+.qdheader {
+    margin-left: 130px;
+}
+
+.qdhead {
+    background: #0094ff;
+    /*margin-right:195px;*/
+    border-bottom: 1px solid;
+    width: 700px;
+}
+
+.qddet {
+    border-left: 1px solid; 
+    border-right: 1px solid; 
+    border-bottom: 1px solid; 
+    /*margin-right:262px;*/ 
+    background: #f5e149;
+    width: 698px;
+}
+
+.qdSKU {
+    width: 100px !important; 
+    display:inline-block;
+    padding-left: 4px;
+}
+
+.qdProduct {
+    padding-left:5px; 
+    width: 205px !important; 
+    display:inline-block
+}
+
+.qdAmt {
+    width: 60px !important; 
+    display:inline-block;
+    text-align: right;
+}
+
+.qdList, .qdDiscount, .qdPrice  {
+    width: 100px !important; 
+    display:inline-block; 
+    text-align:right;
+}
+
+.subtotlbls, .taxlbls, .totlbls {
+    float:right;
+    clear:right;
+    margin-right:102px; 
+    margin-top:10px; 
+    font-weight:bold
+}
+
+.shiplbls {
+    float:right;
+    clear:right;
+    margin-right:103px; 
+    margin-top:10px; 
+    font-weight:bold
+}
+
+.prttotalsub {
+    width: 90px !important; 
+    float:right; 
+    clear:left; 
+    text-align:right; 
+    padding-right: 10px !important;
+    border-left: 1px solid !important; 
+    border-right: 1px solid !important; 
+    border-bottom: 1px solid !important; 
+    background: #f5e149 !important; 
+    border-radius: 0 !important; 
+    margin: 0px !important;
+}
+
+.prttotalship {
+    width: 90px !important; 
+    float:right; 
+    clear:left; 
+    text-align:right; 
+    padding-right: 10px !important;
+    border-left: 1px solid !important; 
+    border-right: 1px solid !important; 
+    border-bottom: 1px solid !important; 
+    background: #f5e149 !important; 
+    border-radius: 0 !important; 
+    margin: -1px !important;
+}
+
+.prttotaltax {
+    width: 90px !important; 
+    float:right; 
+    clear:left; 
+    text-align:right; 
+    padding-right: 10px !important;
+    border-left: 1px solid !important; 
+    border-right: 1px solid !important; 
+    border-bottom: 1px solid !important; 
+    background: #f5e149 !important; 
+    border-radius: 0 !important; 
+    margin-top: -2px !important;
+    margin-bottom: -1px !important;
+}
+
+.prttotaltot {
+    width: 90px !important; 
+    float:right; 
+    clear:left; 
+    text-align:right; 
+    padding-right: 10px !important;
+    border-left: 1px solid !important; 
+    border-right: 1px solid !important; 
+    border-bottom: 1px solid !important; 
+    background: #f5e149 !important; 
+    border-radius: 0 !important; 
+    margin-top: -3px !important;
+}
+
+.ingredhead {
+    margin-left: 160px;
+}
+
+.ingname {
+    width: 500px !important; 
+    margin-left: 0px;  
+}
+
+.ingamount {
+    width: 100px !important;
+}
+
+.ingUOM {
+    width: 125px !important;
+}
+
+.inghead {
+    margin-top: 20px;
+    background: #0094ff;
+    border-bottom: 1px solid;
+    width: 550px !important;
+}
+
+.ingheadname {
+    margin-top: 20px;
+}
+
+.ingdet {
+    border-left: 1px solid; 
+    border-right: 1px solid; 
+    border-bottom: 1px solid; 
+    /*margin-right:262px;*/ 
+    background: #f5e149;
+    width: 550px;
+}
+
+.ingdetname {
+    width: 300px !important; 
+    display:inline-block;
+    padding-left: 4px;
+}
+
+.ingdetamt {
+    width: 100px !important; 
+    display:inline-block;
+}
+
+.ingdetuom {
+    width: 100px !important; 
+    display:inline-block;
+    padding-left: 40px;
+
+} 
+
+.insthead {
+    padding-top: 20px;
+}
+
+.instdet {
+    margin-top: 20px;
+    border: 1px solid;
+    padding: 4px;
+    width: 800px;
+}
+
+.addrcontainer, .orderinfo {
+    display:flex;
+}
+
+.billingaddr, .orderinfoleft {
+   flex: 0 0 55%;
+}
+
+.shippingaddr, .orderinforight {   
+    flex: 1;
+}
+
+.notes, .instructions {
+    width: 80%; 
+    max-width: 100%;
+}
+
+.row {
+    margin-left: 0px;
+}
+
+#QuoteDate, #OrderDate {
+    width:400px;
+    height:35px;
+}
+
+.orderbottom, .indent20 {
+    margin-left: 20px;
+}
+
+input#Search.search-query.form-control.ordersearch {
+     max-width: 500px; 
+     width: 500px !important;
+}
+
+label.control-label.col-md-2.totlbl {
+    float:right;
+    clear:right;
+    margin-right:15px;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+.subTotal, .tax, .total, .shipcost {
+    width: 100px;
+    float:right;
+    clear:left;
+    text-align:right;
+}
+
+td.orderId, td.orderDate {
+    text-align: center;
+}
+
+select {
+    width: 300px !important;
+}
+

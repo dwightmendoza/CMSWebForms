@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="CMSWebForms_IN_0_Web" tags="PhysicalPath">
+    <parameterEntry kind="ProviderPath" scope="contentPath" match="^C:\\Users\\Dwight\\documents\\visual\ studio\ 2015\\Projects\\CMSWebForms\\CMSWebForms\\obj\\Debug\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\Dwight\\documents\\visual\ studio\ 2015\\Projects\\CMSWebForms\\CMSWebForms\\obj\\Debug\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="CMSWebFormsContext-Web.config Connection String" description="" value="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=&quot;C:\Users\Dwight\Documents\Visual Studio 2015\Projects\CMSWebForms\CMSWebForms\App_Data\CMSWebFormsContext-20161221114048.mdf&quot;;Integrated Security=True;Connect Timeout=30" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Dwight\\documents\\visual\ studio\ 2015\\Projects\\CMSWebForms\\CMSWebForms\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CMSWebFormsContext']/@connectionString" />
+  </parameter>
+  <parameter name="Customer-Web.config Connection String" description="" value="data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=&quot;C:\Users\Dwight\Documents\Visual Studio 2015\Projects\CMSWebForms\CMSWebForms\App_Data\CMSWebFormsContext-20161221114048.mdf&quot;;integrated security=True;connect timeout=30;MultipleActiveResultSets=True;App=EntityFramework" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Dwight\\documents\\visual\ studio\ 2015\\Projects\\CMSWebForms\\CMSWebForms\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Customer']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=&quot;C:\Users\Dwight\Documents\Visual Studio 2015\Projects\CMSWebForms\CMSWebForms\App_Data\CMSWebFormsContext-20161221114048.mdf&quot;;Integrated Security=True;Connect Timeout=30" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Dwight\\documents\\visual\ studio\ 2015\\Projects\\CMSWebForms\\CMSWebForms\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

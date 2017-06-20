@@ -1,0 +1,186 @@
+﻿@model CMSUsersAndRoles.Models.QuoteViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Styles {
+    <link href=@Url.Content("~/Content/print.css") rel="stylesheet" type="text/css" media="print"/>
+    }
+
+<h2>Quote</h2>
+
+<div>
+    @*<h4>QuoteViewModel</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QuoteId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QuoteId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesRep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesRep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddressContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddressContact)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddressCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddressCompany)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddressStreet1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddressStreet1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddressStreet2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddressStreet2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddressCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddressCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddressState)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddressState)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddressZip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddressZip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddressPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddressPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddressAltPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddressAltPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddressEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddressEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentTerms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentTerms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuoteDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuoteDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoodUntil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoodUntil)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuoteDetail)
+        </dt>
+
+        <dd><b class="qdhead">&nbsp;SKU&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp; Product Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;        Amount&emsp;&nbsp;&nbsp;          Unit Price&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&nbsp;      Discount&emsp;&emsp;&emsp;&emsp;       Price&emsp;&nbsp;</b></dd>
+        @for (int i = 0; i < Model.QuoteDetail.Count; i++)
+        {
+            <dd class="qddet">
+                @Html.HiddenFor(model => model.QuoteDetail[i].ProductId, new { htmlAttributes = new { @class = "form-control" } })
+                <span class="qdSKU">@Model.QuoteDetail[i].SKU</span>
+                <span class="qdProduct">@Model.QuoteDetail[i].ProductName</span>
+                <span class="qdAmt">@Model.QuoteDetail[i].Amount</span>
+                <span class="qdList">@Model.QuoteDetail[i].ListPrice</span>
+                <span class="qdDiscount">@Model.QuoteDetail[i].Discount</span>
+                <span class="qdPrice">@Model.QuoteDetail[i].Price</span>
+            </dd>
+
+        }
+        <dd>
+            @Html.LabelFor(model => model.Subtotal, htmlAttributes: new { @class = "control-label col-md-2 subtotlbls" })
+            @Html.EditorFor(model => model.Subtotal, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control subTotal prttotalsub" } })
+        </dd>
+        <dd>
+            @Html.LabelFor(model => model.Tax, htmlAttributes: new { @class = "control-label col-md-2 taxlbls" })
+            @Html.EditorFor(model => model.Tax, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control tax prttotaltax"} })
+        </dd>
+        <dd>
+            @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2 totlbls" })
+            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control total prttotaltot"} })
+        </dd>
+    </dl>
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <br />
+        <p>&nbsp;</p>
+        <input type="button" value="Download" class="btn btn-default printbtn" onclick="window.print()" />
+    </div>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.QuoteId }, new { @class = "link" }) |
+        @Html.ActionLink("Back to List", "Index", new { }, new { @class = "link" })
+    </p>

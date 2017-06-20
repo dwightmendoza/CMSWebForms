@@ -1,0 +1,63 @@
+﻿@model CMSUsersAndRoles.Models.Formula
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Formula</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SKU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SKU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="ingheadname">
+            @Html.DisplayNameFor(model => model.Ingredients)
+        </dt>
+
+        <dd class="inghead"><b>&nbsp;&nbsp;Item Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Amount&emsp;&emsp;&emsp;&emsp;&emsp;Unit of measure&emsp;</b></dd>
+                @for (int i = 0; i < Model.Ingredients.Count; i++)
+                {
+                    <dd class="ingdet">
+                        @Html.HiddenFor(model => model.Ingredients[i].ProductId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.Ingredients[i].IngredientId, new { htmlAttributes = new { @class = "form-control" } })
+                        <span class="ingdetname">@Model.Ingredients[i].Name</span>
+                        <span class="ingdetamt">@Model.Ingredients[i].Amount</span>
+                        <span class="ingdetuom">@Model.Ingredients[i].UnitOfMeasure</span>
+                        @*@Html.DisplayFor(model => model.Ingredients[i].Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.Ingredients[i].Amount, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.Ingredients[i].UnitOfMeasure, new { htmlAttributes = new { @class = "form-control" } })*@
+                    </dd>
+
+                }
+
+                <dt class="insthead">
+                    @Html.DisplayNameFor(model => model.Instructions)
+                </dt>
+
+                <dd class="instdet">
+                    @Html.DisplayFor(model => model.Instructions)
+                </dd>
+
+    </dl>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

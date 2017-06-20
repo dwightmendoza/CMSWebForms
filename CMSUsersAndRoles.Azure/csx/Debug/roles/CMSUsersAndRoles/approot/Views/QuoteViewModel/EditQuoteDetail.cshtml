@@ -1,0 +1,47 @@
+﻿@model CMSUsersAndRoles.Models.QuoteDetail
+
+@{
+    ViewBag.Title = "EditQuoteDetail";
+    Layout = null;
+}
+
+
+    <div id="row" class="row">
+        <table>
+
+            @using (Html.BeginCollectionItem("quoteDetail"))
+
+            {
+
+                <tr>
+                    @Html.HiddenFor(model => model.QuoteId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.HiddenFor(model => model.QuoteDetailId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.HiddenFor(model => model.ProductId, new { htmlAttributes = new { @class = "form-control ProductId" } })
+                    @Html.EditorFor(model => model.SKU, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control SKU" } })
+                    @Html.DropDownListFor(model => model.ProductId, new SelectList(ViewBag.ProductData, "ProductId", "Name"), "---Select one---", new { required = "required", htmlAttributes = new { @class = "ProductName" } })
+                    @Html.HiddenFor(model => model.ProductName)
+
+                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control amount" } })
+                    @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.ListPrice, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control listprice" } })
+                    @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control discount" } })
+                    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control price" } })
+                    
+                    
+                    @Ajax.ActionLink(" ", "DeleteProduct", "QuoteViewModel", new { quoteId = Model.QuoteId, quoteDetailId = (Model.QuoteDetailId) },
+                          new AjaxOptions
+                          {
+                              HttpMethod = "POST",
+                              Confirm = "Are you Sure You Want to Delete " + Model.ProductName,
+                              OnSuccess = "RemoveRow"
+                          },
+                          new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+                </tr>
+            }
+
+        </table>
+    </div>
+       
+    
+
+
